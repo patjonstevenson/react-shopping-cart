@@ -23,21 +23,16 @@ function App() {
 
 	const addItem = item => {
 		// add the given item to the cart
-		setCart([...cart, item]);
+		const itemWithTime = {
+			...item,
+			time: Date.now()
+		}
+		setCart([...cart, itemWithTime]);
 	};
 
-	const removeItem = id => {
+	const removeItem = time => {
 		// remove the given item from the cart
-		//setCart(cart.filter(item => item.id !== id));
-		const pos = cart.findIndex(item => item.id === id);
-		let newCart = [];
-		for (let i = 0; i < cart.length; i++) {
-			if (i !== pos) {
-				newCart.push(cart[i]);
-			}
-		}
-		setCart(newCart);
-
+		setCart(cart.filter(item => item.time !== time));
 	}
 
 	return (
