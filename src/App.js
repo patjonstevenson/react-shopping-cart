@@ -28,7 +28,16 @@ function App() {
 
 	const removeItem = id => {
 		// remove the given item from the cart
-		setCart(cart.filter(item => item.id !== id));
+		//setCart(cart.filter(item => item.id !== id));
+		const pos = cart.findIndex(item => item.id === id);
+		let newCart = [];
+		for (let i = 0; i < cart.length; i++) {
+			if (i !== pos) {
+				newCart.push(cart[i]);
+			}
+		}
+		setCart(newCart);
+
 	}
 
 	return (
