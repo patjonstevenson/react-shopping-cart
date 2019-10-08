@@ -23,11 +23,7 @@ function App() {
 
 	const addItem = item => {
 		// add the given item to the cart
-		const itemWithTime = {
-			...item,
-			time: Date.now()
-		}
-		setCart([...cart, itemWithTime]);
+		setCart([...cart, { ...item, time: Date.now() }]);
 	};
 
 	const removeItem = time => {
